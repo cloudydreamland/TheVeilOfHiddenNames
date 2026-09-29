@@ -1,3 +1,3 @@
-# English README moved
+# English README
 
-The English project overview is now the repository's primary [README](README.md). For Simplified Chinese, see [README.zh-CN.md](README.zh-CN.md).
+The English overview is now in [README.en.md](README.en.md). The GitHub default README is Simplified Chinese: [README.md](README.md).
