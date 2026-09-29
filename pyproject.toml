@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "helan"
+version = "0.1.0rc1"
+description = "The Veil of Hidden Names (Helan) | Chinese-first personal data detection and masking"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "helan contributors" }]
+keywords = ["pii", "脱敏", "privacy", "chinese", "nlp", "llm", "compliance"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Security",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+[project.optional-dependencies]
+jieba = ["jieba>=0.42"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+helan = "helan.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/cloudydreamland/TheVeilOfHiddenNames"
+Repository = "https://github.com/cloudydreamland/TheVeilOfHiddenNames"
+Issues = "https://github.com/cloudydreamland/TheVeilOfHiddenNames/issues"
+Changelog = "https://github.com/cloudydreamland/TheVeilOfHiddenNames/blob/main/CHANGELOG.md"
+Security = "https://github.com/cloudydreamland/TheVeilOfHiddenNames/security/policy"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+helan = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+ignore = [
+    "DTZ011",  # 出生日期校验用 date.today() 足够，与时区无关
+    "RUF007",  # 测试中 zip(seq, seq[1:]) 比 pairwise 更直观
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

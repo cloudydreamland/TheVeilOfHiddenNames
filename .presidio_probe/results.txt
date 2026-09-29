@@ -1,0 +1,21 @@
+=== presidio 模式层实测(12 篇语料, 5 类可比实体, 精确匹配口径) ===
+credit_card    TP=  2 FP=  0 FN=  0  P=1.000 R=1.000 F1=1.000
+email          TP=  3 FP=  0 FN=  0  P=1.000 R=1.000 F1=1.000
+url            TP=  0 FP=  5 FN=  0  P=0.000 R=0.000 F1=0.000
+ip             TP=  0 FP=  0 FN=  0  P=0.000 R=0.000 F1=0.000
+phone_default  TP=  6 FP=  4 FN=  4  P=0.600 R=0.600 F1=0.600
+phone_cn       TP= 10 FP=  3 FN=  0  P=0.769 R=1.000 F1=0.870
+
+=== FP 样本(最多 20 条) ===
+[phone_default] FP PHONE 0.40 '医保卡按时就诊。发票号 0341728596 供报销使用。' (hospital)
+[url] FP URL 0.50 '箱 user.ming@example.cn 也可以。|客服：已记录' (support)
+[phone_default] FP PHONE 0.40 '客服：已记录，会员卡号 5003820001 请妥善保管。' (support)
+[phone_cn] FP PHONE 0.40 'ECAP）。|前台电话：010-65542317。会议决定下周三前提交需' (meeting)
+[url] FP URL 0.50 '12124632|邮箱：career.dev2026@example' (resume)
+[url] FP URL 0.50 'eer.dev2026@example.com|求职意向：后端开发工程' (resume)
+[url] FP URL 0.50 '040801|电子邮箱：job.apply2026@examp' (hiring)
+[url] FP URL 0.50 'b.apply2026@example.org|应聘岗位：数据分析师。' (hiring)
+[phone_default] FP PHONE 0.40 '0.00 元。联系电话 021-63321588。|对账编号 RC-77' (corp)
+[phone_default] FP PHONE 0.40 '88。|对账编号 RC-7712039485。' (corp)
+[phone_cn] FP PHONE 0.40 '0.00 元。联系电话 021-63321588。|对账编号 RC-77' (corp)
+[phone_cn] FP PHONE 0.40 '88。|对账编号 RC-7712039485。' (corp)

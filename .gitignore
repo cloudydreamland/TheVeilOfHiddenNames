@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.presidio_venv/
+.presidio_probe/*.whl
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.jsonl
+vault.json
