@@ -12,8 +12,11 @@ Helan validates structured Chinese identifiers with their official checksum rule
 
 ## Quick start
 
-> This package is not on PyPI yet. Install the current GitHub version with:
+```bash
+python -m pip install helan
+```
 
+Or install from source (latest development version):
 
 ```bash
 git clone https://github.com/cloudydreamland/TheVeilOfHiddenNames.git
