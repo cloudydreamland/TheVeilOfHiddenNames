@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "helan"
-version = "0.1.0rc1"
+version = "0.1.0"
 description = "The Veil of Hidden Names (Helan) | Chinese-first personal data detection and masking"
 readme = "README.md"
 requires-python = ">=3.10"

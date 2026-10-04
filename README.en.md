@@ -4,9 +4,12 @@
 
 **Helan** is a Chinese-first Python library for detecting and masking personal data before it enters an LLM, RAG, or data-processing pipeline.
 
+[![PyPI](https://img.shields.io/pypi/v/helan)](https://pypi.org/project/helan/)
+[![Python](https://img.shields.io/pypi/pyversions/helan)](https://pypi.org/project/helan/)
 [![CI](https://github.com/cloudydreamland/TheVeilOfHiddenNames/actions/workflows/ci.yml/badge.svg)](https://github.com/cloudydreamland/TheVeilOfHiddenNames/actions/workflows/ci.yml)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
-[![MIT license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+![helan demo: recognize → reversible masking → exact restore (real output)](docs/assets/demo.svg)
 
 Helan validates structured Chinese identifiers with their official checksum rules, returns offsets into the original text, and can either irreversibly mask a match or restore it later from a protected vault.
 
@@ -32,7 +35,9 @@ text = "联系张伟：身份证 11010519491231002X，电话 13812345678。"
 for entity in recognize(text):
     assert entity.text == text[entity.start:entity.end]
 
-masked, vault = mask(text, ops={"ID_CARD": "vault", "PHONE": "partial"})
+# Only treat ID cards: the placeholder is reversible via the vault.
+# Without `types=`, every detected type is masked with its default operator.
+masked, vault = mask(text, ops={"ID_CARD": "vault"}, types=["ID_CARD"])
 assert restore(masked, vault) == text
 ```
 

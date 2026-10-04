@@ -6,9 +6,12 @@
 
 **中文优先的 PII 检测与脱敏库。校验和级识别，可逆 Vault 还原，格式保留假名——帮助你在把数据交给大模型或其他服务前发现并处理敏感信息。**
 
-[![CI](https://github.com/cloudydreamland/TheVeilOfHiddenNames/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
-[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
+[![PyPI](https://img.shields.io/pypi/v/helan)](https://pypi.org/project/helan/)
+[![Python](https://img.shields.io/pypi/pyversions/helan)](https://pypi.org/project/helan/)
+[![CI](https://github.com/cloudydreamland/TheVeilOfHiddenNames/actions/workflows/ci.yml/badge.svg)](https://github.com/cloudydreamland/TheVeilOfHiddenNames/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+![helan 演示：识别 → 可逆脱敏 → 精确还原（真实运行输出）](docs/assets/demo.svg)
 
 ## 为什么需要它 / Why
 
@@ -50,9 +53,10 @@ text = "出租方张伟明（身份证 11010519491231002X，电话 13812345678�
 for e in recognize(text):
     print(e.type, e.start, e.end, e.text)
 
-# 可逆脱敏：身份证换成占位符，可精确还原
+# 可逆脱敏：只处理身份证，占位符可精确还原
+# （types 限定识别范围；不传 types 时所有类型按默认算子脱敏）
 
-masked, vault = mask(text, ops={"ID_CARD": "vault"})
+masked, vault = mask(text, ops={"ID_CARD": "vault"}, types=["ID_CARD"])
 original = restore(masked, vault)
 assert original == text
 
